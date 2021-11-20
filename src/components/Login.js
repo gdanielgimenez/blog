@@ -1,6 +1,7 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import axios from 'axios';
+import {useNavigate} from 'react-router-dom';
 import {Button, Container,Grid, Row,Col,Alert,Form} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -20,6 +21,7 @@ const validate = (values) =>{
 };
 
 function Login(){
+    let navigate = useNavigate();
     const SignupForm = () =>{
         const formik = useFormik({
             initialValues:{
@@ -35,6 +37,7 @@ function Login(){
                         window.localStorage.setItem('access_token',res.data.token)
                         window.localStorage.setItem('isLogged',true)
                         console.log(res.status)
+                        navigate('/Home')
                         return res.status
                     }else{
                         alert("Login failed")
