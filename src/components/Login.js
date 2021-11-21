@@ -44,7 +44,7 @@ function Login(){
                     }
                 }).catch((error)=>{
                     console.log(error);
-                    alert((error))
+                    alert(`login failed with  ${error}`)
                 })
             }
         });

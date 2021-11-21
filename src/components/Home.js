@@ -1,9 +1,9 @@
 import React, {useEffect} from "react";
-import { Navigate,useHistory} from 'react-router-dom';
+import { Navigate,useNavigate} from 'react-router-dom';
 import {Button, ButtonGroup, Card,Col,Row} from 'react-bootstrap';
 import { useSelector,useDispatch } from "react-redux";
 import {getBlogs} from '../actions';
-
+import { Link } from "react-router-dom";
 const logOut = ()=>{
     window.localStorage.clear();
     window.location.reload();   
@@ -12,7 +12,7 @@ const logOut = ()=>{
 
 function Home(){
    const dispatch = useDispatch();
-   
+   const navigate = useNavigate();
     useEffect(()=>{
         dispatch(getBlogs())
     },[])
@@ -29,7 +29,7 @@ function Home(){
                         </Card.Title>
                     </Card.Body>
                     <ButtonGroup size="" className="mr-2">
-                    <Button variant="primary" > details</Button>{'  '}
+                    <Button variant="primary" onClick={()=>{navigate(`/${blog.id}`)}}> details</Button>{'  '}
                     <Button variant="primary" >edit</Button>{' '}
                     <Button variant="danger" >delete</Button>{' '}
                     </ButtonGroup>                    
