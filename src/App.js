@@ -12,7 +12,7 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <Router>
         <Routes>
           <Route exact path="/" element={<Login />}>

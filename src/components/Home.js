@@ -32,18 +32,21 @@ function Home(){
     const displayBlogs = blogs  && blogs.length ?(
         blogs.map(blog =>{
             return(
-                <Col sm={12} md={6}  lg={6}>
-                <Card key={blog.id} className="m-3" sm={12} md={6} lg={4} style={{height:'175px'}}  >
-                    <Card.Body>
-                        <Card.Title>
+                <Col sm={12}  lg={6}>
+                <Card key={blog.id} className="cardHome" >
+                <Card.Header className="title">
                             {blog.title}
-                        </Card.Title>
-                    </Card.Body>
-                    <ButtonGroup size="" className="mr-2">
-                    <Button variant="primary" onClick={()=>{navigate(`/${blog.id}`)}}> details</Button>{'  '}
-                    <Button variant="primary" onClick={()=>{handleEdit(blog.id,blog.title,blog.body)}}>edit</Button>{' '}
-                    <Button variant="danger" onClick={()=>{handleDelete(blog.id)}}>delete</Button>{' '}
-                    </ButtonGroup>                    
+                        </Card.Header>
+                        <Card.Body variant="d-flex">
+                    
+                        </Card.Body>
+                                   
+                    <ButtonGroup size="sm" >
+                    <Button variant="outline-primary " onClick={()=>{navigate(`/${blog.id}`)}}> details</Button>{'  '}
+                    <Button variant="outline-success" onClick={()=>{handleEdit(blog.id,blog.title,blog.body)}}>edit</Button>{' '}
+                    <Button variant="outline-danger" onClick={()=>{handleDelete(blog.id)}}>delete</Button>{' '}
+                    </ButtonGroup>
+            
                 </Card>
                 </Col>
             )
@@ -57,7 +60,7 @@ function Home(){
         return(
             <div>
                 < NavBar /> 
-                <Row align="center">
+                <Row sm={12} lg={6} align="center">
                 { displayBlogs }
                 </Row>
             </div>

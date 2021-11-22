@@ -4,7 +4,7 @@ import axios from 'axios';
 import NavBar from "./NavBar";
 import { useDispatch, useSelector } from 'react-redux';
 import {useNavigate, Navigate} from 'react-router-dom';
-import {Button, Container,Grid, Row,Col,Alert,Form} from 'react-bootstrap';
+import {Button, Container,Grid, Row,Col,Alert,Form, Card} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { getBlog } from '../actions';
 const validate = (values) =>{
@@ -75,7 +75,8 @@ function CreateBlog(){
             <Form.Control
               id="body"
               name="body"
-              type="body"
+              type="text"
+              className="textarea"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.body}
@@ -83,7 +84,7 @@ function CreateBlog(){
             {formik.touched.body && formik.errors.body ? <Alert variant="danger mt-3 mn-2">{formik.errors.body}</Alert>:null}
            </Form.Group>
            <br/>
-            <Button type="submit" variant="primary" size="lg">Submit</Button>{' '}
+            <Button type="submit" variant="primary" size="lg mb-3">Submit</Button>{' '}
           </Form>
           </Container>
         )
@@ -95,9 +96,11 @@ function CreateBlog(){
     return(
         <div>
             <NavBar />
-            <Container sm={6} lg={8} variant="center mt-5">
+            <div className="App-header">
+              <Card className="CardEdit" align="center" variant="mt-5 ">  
                 <CreateForm />
-            </Container>
+                </Card>
+            </div>
         </div>
           )
         }

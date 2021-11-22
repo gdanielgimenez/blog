@@ -2,7 +2,7 @@ import React from 'react';
 import { useFormik } from 'formik';
 import axios from 'axios';
 import {useNavigate, Navigate} from 'react-router-dom';
-import {Button, Container,Grid, Row,Col,Alert,Form} from 'react-bootstrap';
+import {Button, Container,Grid, Row,Col,Alert,Form, Card} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const validate = (values) =>{
@@ -49,14 +49,15 @@ function Login(){
             }
         });
         return (
-            <Container rows={3} variant="center">
-          <Form onSubmit={formik.handleSubmit}>
+            <Container >
+            < Form onSubmit={formik.handleSubmit}>
            <Form.Group >
-            <Form.Label   htmlFor="password">Password</Form.Label>
+            <Form.Label   htmlFor="password" className="label">Password</Form.Label>
             <Form.Control
                 id="password"
                 name="password"
                 type="password"
+                placeholder="Password"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.name}
@@ -70,11 +71,12 @@ function Login(){
                   ):null}
                   </Form.Group>
             <Form.Group>
-            <Form.Label htmlFor="email">Email Address</Form.Label>
+            <Form.Label htmlFor="email" className="label">Email Address</Form.Label>
             <Form.Control
               id="email"
               name="email"
               type="email"
+              placeholder="Enter email"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.email}
@@ -82,7 +84,7 @@ function Login(){
             {formik.touched.email && formik.errors.email ? <Alert variant="danger mt-3 mn-2">{formik.errors.email}</Alert>:null}
            </Form.Group>
            <br/>
-            <Button type="submit" variant="primary" size="lg">Submit</Button>
+            <Button type="submit" variant="primary" size="lg mb-3">Login</Button>
           </Form>
           </Container>
         )
@@ -92,8 +94,10 @@ function Login(){
         return <Navigate to="/Home" />;
     }else{
     return(
-        <Container sm={6} lg={8} variant="center">
-            <SignupForm />
+        <Container className="App-header">
+            <Card border="secondary" className="card"  align="center" variant="mt-5 ">
+                <SignupForm />
+            </Card>
         </Container>
           )
         }
