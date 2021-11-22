@@ -21,3 +21,12 @@ export const getDetails =  async(id) =>{
         console.log(error)
     })
 }
+export const deletePost = async(id)=>{
+    await axios.delete(`https://jsonplaceholder.typicode.com/posts/${id}`)
+    .then(res =>{
+        console.log(res)
+    }).catch((error)=>{
+        console.log(error)
+    })
+
+}

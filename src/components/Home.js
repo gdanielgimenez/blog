@@ -3,6 +3,7 @@ import { Navigate,useNavigate} from 'react-router-dom';
 import {Button, ButtonGroup, Card,Col,Row} from 'react-bootstrap';
 import { useSelector,useDispatch } from "react-redux";
 import {getBlogs} from '../actions';
+import { deletePost } from "../api";
 const logOut = ()=>{
     window.localStorage.clear();
     window.location.reload();   
@@ -15,8 +16,13 @@ function Home(){
         window.localStorage.setItem("blogTitle",title)
         window.localStorage.setItem("blogBody",body)
      }
+    const handleDelete = async(id)=>{
+        console.log("Deleted blog")
+        await deletePost(id);
+    }
     const dispatch = useDispatch();
-   const navigate = useNavigate();
+    const navigate = useNavigate();
+
     useEffect(()=>{
         dispatch(getBlogs())
     },[])
@@ -35,7 +41,7 @@ function Home(){
                     <ButtonGroup size="" className="mr-2">
                     <Button variant="primary" onClick={()=>{navigate(`/${blog.id}`)}}> details</Button>{'  '}
                     <Button variant="primary" onClick={()=>{handleEdit(blog.id,blog.title,blog.body)}}>edit</Button>{' '}
-                    <Button variant="danger" >delete</Button>{' '}
+                    <Button variant="danger" onClick={()=>{handleDelete(blog.id)}}>delete</Button>{' '}
                     </ButtonGroup>                    
                 </Card>
                 </Col>

@@ -34,14 +34,18 @@ function Edit(){
         const formik = useFormik({
             initialValues:{
                 title:blog.title,
-                body:blog.body
+                body:blog.body,
+                id:localStorage.getItem("blogId")
             },
             validate,
             onSubmit: async(values)=>{
-                const data ={title:values.title, body:values.body,id:blog.id}
-                await axios.put('https://jsonplaceholder.typicode.com/posts/1',data)
+                const data ={title:values.title, body:values.body,id:values.id}
+                await axios.put(`https://jsonplaceholder.typicode.com/posts/${data.id}`,data)
                 .then(res =>{
-                    console.log(res)
+                    console.log(res.data)
+                    alert('post updated')
+                    navigate('/Home')
+
                 }).catch((error)=>{
                     console.log(error);
                     alert(`update failed with  ${error}`)
