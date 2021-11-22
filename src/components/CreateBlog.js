@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import { useFormik } from 'formik';
 import axios from 'axios';
+import NavBar from "./NavBar";
 import { useDispatch, useSelector } from 'react-redux';
 import {useNavigate, Navigate} from 'react-router-dom';
 import {Button, Container,Grid, Row,Col,Alert,Form} from 'react-bootstrap';
@@ -20,7 +21,6 @@ const validate = (values) =>{
     }
     return errors;
 };
-    //useEffect will bring the data from patch request or details request
 
 function CreateBlog(){
     const dispatch = useDispatch();
@@ -84,7 +84,6 @@ function CreateBlog(){
            </Form.Group>
            <br/>
             <Button type="submit" variant="primary" size="lg">Submit</Button>{' '}
-            <Button type="submit" variant="primary" size="lg" onClick={()=>{navigate('/Home')}}>Home</Button>
           </Form>
           </Container>
         )
@@ -94,9 +93,12 @@ function CreateBlog(){
         return <Navigate to="/" />;
     }else{
     return(
-        <Container sm={6} lg={8} variant="center">
-            <CreateForm />
-        </Container>
+        <div>
+            <NavBar />
+            <Container sm={6} lg={8} variant="center mt-5">
+                <CreateForm />
+            </Container>
+        </div>
           )
         }
 }

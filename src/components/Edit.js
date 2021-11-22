@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import { useFormik } from 'formik';
 import axios from 'axios';
+import NavBar from "./NavBar";
 import { getDetails } from '../api';
 import { useDispatch, useSelector } from 'react-redux';
 import {useNavigate, Navigate} from 'react-router-dom';
@@ -87,7 +88,6 @@ function Edit(){
            </Form.Group>
            <br/>
             <Button type="submit" variant="primary" size="lg">Submit</Button>{' '}
-            <Button type="submit" variant="primary" size="lg" onClick={()=>{navigate('/Home')}}>Home</Button>
           </Form>
           </Container>
         )
@@ -97,9 +97,12 @@ function Edit(){
         return <Navigate to="/" />;
     }else{
     return(
-        <Container sm={6} lg={8} variant="center">
-            <EditForm />
-        </Container>
+        <div>
+            <NavBar/>
+            <Container sm={6} lg={8} variant="center">
+                <EditForm />
+            </Container>
+        </div>
           )
         }
 }

@@ -1,4 +1,5 @@
 import React, {useEffect} from "react";
+import NavBar from "./NavBar";
 import { Navigate,useNavigate} from 'react-router-dom';
 import {Button, ButtonGroup, Card,Col,Row} from 'react-bootstrap';
 import { useSelector,useDispatch } from "react-redux";
@@ -55,10 +56,7 @@ function Home(){
     }else{
         return(
             <div>
-                <p>congratulations you're logged in</p>
-                <Button type="Button" variant="primary" size="lg" onClick={()=>{logOut()}}>Log Out</Button>{' '}
-                <Button type="Button" variant="primary" size="lg" onClick={()=>{navigate('/CreateBlog')}}>Create Blog</Button>
-                
+                < NavBar /> 
                 <Row align="center">
                 { displayBlogs }
                 </Row>
