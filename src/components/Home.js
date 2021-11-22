@@ -56,7 +56,9 @@ function Home(){
         return(
             <div>
                 <p>congratulations you're logged in</p>
-                <Button type="Button" variant="primary" size="lg" onClick={()=>{logOut()}}>Log Out</Button>
+                <Button type="Button" variant="primary" size="lg" onClick={()=>{logOut()}}>Log Out</Button>{' '}
+                <Button type="Button" variant="primary" size="lg" onClick={()=>{navigate('/CreateBlog')}}>Create Blog</Button>
+                
                 <Row align="center">
                 { displayBlogs }
                 </Row>

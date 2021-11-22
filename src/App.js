@@ -4,6 +4,7 @@ import Login from './components/Login';
 import Home from './components/Home';
 import BlogPage from './components/BlogPage';
 import Edit from './components/Edit';
+import CreateBlog from './components/CreateBlog';
 import { BrowserRouter as Router, Route,Routes } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -21,6 +22,8 @@ function App() {
           <Route exact path="/:blog" element={<BlogPage/>}>
           </Route>
           <Route exact path="/Edit" element={<Edit/>}>
+          </Route>
+          <Route exact path="/CreateBlog" element={<CreateBlog/>}>
           </Route>
         </Routes>
       </Router> 
