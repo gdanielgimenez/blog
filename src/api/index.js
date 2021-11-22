@@ -12,3 +12,12 @@ export const getPosts = async()=>{
         console.log(error)
     })
 }
+export const getDetails =  async(id) =>{
+    await axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`)
+    .then(res =>{
+        console.log(res.data)
+        return res.data
+    }).catch((error)=>{
+        console.log(error)
+    })
+}

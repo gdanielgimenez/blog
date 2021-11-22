@@ -1,5 +1,5 @@
 import axios from "axios"
-import { GET_BLOGS,BLOG_ERROR } from "../types"
+import { GET_BLOGS,BLOG_ERROR, EDIT_BLOG } from "../types"
 
 
 export const getBlogs = () => async dispatch =>{
@@ -12,6 +12,22 @@ export const getBlogs = () => async dispatch =>{
 }
     catch(e){
         dispatch( {
+            type:BLOG_ERROR,
+            payload:console.log(e),
+        })
+    }
+}
+
+export const getBlog = (id)=> async dispatch =>{
+    try{
+        const res = await axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`)
+        dispatch({
+            type:EDIT_BLOG,
+            payload:res.data
+        })
+    }
+    catch(e){
+        dispatch({
             type:BLOG_ERROR,
             payload:console.log(e),
         })

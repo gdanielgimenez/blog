@@ -12,5 +12,6 @@ import deleteBlogs from './deleteBlogs';
 export default allReducers;*/
 
 export default combineReducers({
-    setBlogs:setBlogs
+    setBlogs:setBlogs,
+    editBlogs:editBlogs
 })

@@ -3,15 +3,19 @@ import { Navigate,useNavigate} from 'react-router-dom';
 import {Button, ButtonGroup, Card,Col,Row} from 'react-bootstrap';
 import { useSelector,useDispatch } from "react-redux";
 import {getBlogs} from '../actions';
-import { Link } from "react-router-dom";
 const logOut = ()=>{
     window.localStorage.clear();
     window.location.reload();   
    }
 
-
 function Home(){
-   const dispatch = useDispatch();
+    const handleEdit= (id,title,body) =>{
+        navigate(`/Edit`)
+        window.localStorage.setItem("blogId",id)
+        window.localStorage.setItem("blogTitle",title)
+        window.localStorage.setItem("blogBody",body)
+     }
+    const dispatch = useDispatch();
    const navigate = useNavigate();
     useEffect(()=>{
         dispatch(getBlogs())
@@ -30,7 +34,7 @@ function Home(){
                     </Card.Body>
                     <ButtonGroup size="" className="mr-2">
                     <Button variant="primary" onClick={()=>{navigate(`/${blog.id}`)}}> details</Button>{'  '}
-                    <Button variant="primary" >edit</Button>{' '}
+                    <Button variant="primary" onClick={()=>{handleEdit(blog.id,blog.title,blog.body)}}>edit</Button>{' '}
                     <Button variant="danger" >delete</Button>{' '}
                     </ButtonGroup>                    
                 </Card>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import axios from 'axios';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, Navigate} from 'react-router-dom';
 import {Button, Container,Grid, Row,Col,Alert,Form} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -88,10 +88,14 @@ function Login(){
         )
     }
     //--------------------------------------------//
+    if(window.localStorage.hasOwnProperty('isLogged')){
+        return <Navigate to="/Home" />;
+    }else{
     return(
         <Container sm={6} lg={8} variant="center">
             <SignupForm />
         </Container>
-    )
+          )
+        }
 }
 export default Login;
